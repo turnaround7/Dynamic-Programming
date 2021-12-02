@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner scan=new Scanner(System.in);
+        int n=scan.nextInt();
+        int dp[]=new int[n+1];
+        int stairs=Stairs(n,dp);
+        System.out.println(stairs);
+    }
+ public static int Stairs(int n,int[]dp)
+ {
+     if(n==0||n==1||n==2)
+     {
+         dp[n]=n;
+         return dp[n];
+     }
+     if(n==3)
+     {
+         dp[3]=Stairs(n-1,dp)+Stairs(n-2,dp)+1;
+         return dp[3];
+     }
+     if(dp[n]!=0)
+     {
+         return dp[n];
+     }
+     dp[n]=Stairs(n-1,dp)+Stairs(n-2,dp)+Stairs(n-3,dp);
+     return dp[n];
+ }
+}
+
+// T(n) : O(n)
